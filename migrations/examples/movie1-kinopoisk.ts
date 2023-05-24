@@ -1,72 +1,16 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export class Kinopoisk1 implements MigrationInterface {
+export class Movie1Kinopoisk implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
-            INSERT INTO "Genres" (name, is_eng) VALUES
-            ('Комедия', false), ('Comady', true),
-            ('Мелодрама', false), ('Melodrama', true),
-            ('Приключения', false), ('Adventures', true),
-            ('Вестерн', false), ('Western', true),
-            ('Боевик', false), ('Action Movie', true),
-            ('Хоррор', false), ('Horror', true),
-            ('Триллер', false), ('Thriller', true),
-            ('Детектив', false), ('Detective', true),
-            ('Драма', false), ('Drama', true),
-            ('Фантастика', false), ('Fantastic', true),
-            ('Фэнтези', false), ('Fantasy', true),
-            ('Мюзикл', false), ('Musical', true);    
-        `);
-        await queryRunner.query(`
-            INSERT INTO "Roles" (name, is_eng) VALUES
-            ('Режиссер', false), ('Stage director', true),
-            ('Сценарист', false), ('Screenwriter', true),
-            ('Продюсер', false), ('Producer', true),
-            ('Оператор', false), ('Operator', true),
-            ('Композитор', false), ('Compouser', true),
-            ('Художник', false), ('Painter', true),
-            ('Монтажер', false), ('Editor', true),
-            ('В главных ролях', false), ('Starring', true),
-            ('Роли дублировали', false), ('Roles were duplicated', true);
-        `);
-        await queryRunner.query(`
-            INSERT INTO "Countries" (name, is_eng) VALUES
-            ('Франция', false), ('France', true),
-            ('Испания', false), ('Spanish', true),
-            ('США', false), ('USA', true),
-            ('Китай', false), ('China', true),
-            ('Италия', false), ('Italy', true),
-            ('Мексика', false), ('Mexico', true),
-            ('Великобритания', false), ('United Kingdom', true),
-            ('Турция', false), ('Turkish', true),
-            ('Германия', false), ('Germany', true),
-            ('Тайланд', false), ('Thailand', true),
-            ('Австрия', false), ('Austria', true),
-            ('Гонконг', false), ('Hongkong', true),
-            ('Малайзия', false), ('Malaysia', true),
-            ('Греция', false), ('Greece', true),
-            ('Россия', false), ('Russia', true),
-            ('Япония', false), ('Japan', true),
-            ('Португалия', false), ('Portugal', true),
-            ('Канада', false), ('Canada', true),
-            ('Польша', false), ('Poland', true),
-            ('Нидерланды', false), ('Netherlands', true);
-        `);
         await queryRunner.query(`
             INSERT INTO "Movies" (title, orig_title, production_year, tagline, budget, dvd_release, blueray_release, age_limit, mpaa_rating, duration_min, film_description,
                 is_serial, is_eng, country_id) VALUES
             ('Трансформеры: Последний рыцарь', 'Transformers: The Last Knight', '01.01.2017', 'Спасается лишь один из миров', 217000000, '05.02.2018', '05.02.2018', 12, 'PG-13',
-                154, 'Оптимус Прайм исчез. Люди ведут войну с Трансформерами. 
-                Ключ к нашему будущему погребен в тайнах прошлого, в скрытой истории Трансформеров на Земле… 
-                Миссия по спасению мира ложится на плечи разношерстной компании, состоящей из Кейда Йегера, Бамблби, английского лорда и профессора из Оксфорда. 
-                Пришла пора действовать! Жертвы станут героями. Герои станут злодеями. Выстоит только один мир: их или наш.',
-            false, false, 5),
+                154, 'Оптимус Прайм исчез. Люди ведут войну с Трансформерами. Ключ к нашему будущему погребен в тайнах прошлого, в скрытой истории Трансформеров на Земле… Миссия по спасению мира ложится на плечи разношерстной компании, состоящей из Кейда Йегера, Бамблби, английского лорда и профессора из Оксфорда. Пришла пора действовать! Жертвы станут героями. Герои станут злодеями. Выстоит только один мир: их или наш.',
+                false, false, 5),
             ('Transformers: The Last Knight', 'Transformers: The Last Knight', '01.01.2017', 'Only one of the worlds is saved', 217000000, '05.02.2018', '05.02.2018', 12, 'PG-13',
-                154, 'Optimus Prime has disappeared. People are at war with Transformers.
-                The key to our future is buried in the secrets of the past, in the hidden history of Transformers on Earth…
-                The mission to save the world falls on the shoulders of a motley company consisting of Cade Yeager, Bumblebee, an English lord and a professor from Oxford.
-                Its time to act! The victims will become heroes. Heroes will become villains. Only one world will stand: theirs or ours.',
+                154, 'Optimus Prime has disappeared. People are at war with Transformers. The key to our future is buried in the secrets of the past, in the hidden history of Transformers on Earth… The mission to save the world falls on the shoulders of a motley company consisting of Cade Yeager, Bumblebee, an English lord and a professor from Oxford. Its time to act! The victims will become heroes. Heroes will become villains. Only one world will stand: theirs or ours.',
                 false, true, 6);
         `);
         await queryRunner.query(`

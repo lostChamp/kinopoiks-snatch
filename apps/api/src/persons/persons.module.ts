@@ -2,9 +2,7 @@ import { Module } from '@nestjs/common';
 import { PersonsEntity, TypeormModuleConfig } from '@kinopoisk-snitch/typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
-import { PersonCommand } from './api-gateway/person.command';
-import { PersonQuery } from './api-gateway/person.query';
-import { PersonEvent } from './api-gateway/person.event';
+import { PersonsCommand } from './api-gateway/person.command';
 import { rmqPersonConfig } from '@kinopoisk-snitch/rmq-configs'
 
 @Module({
@@ -13,6 +11,8 @@ import { rmqPersonConfig } from '@kinopoisk-snitch/rmq-configs'
     TypeOrmModule.forFeature([PersonsEntity]),
     RabbitMQModule.forRoot(RabbitMQModule, rmqPersonConfig()),
   ],
-  controllers: [PersonCommand, PersonQuery, PersonEvent],
+  controllers: [
+    PersonsCommand,
+  ],
 })
 export class PersonsModule {}
